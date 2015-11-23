@@ -28,6 +28,8 @@ from httpie.output.streams import (
     write, write_with_colors_win_py3
 )
 
+from two1.lib.bitrequests import ResourcePriceGreaterThanMaxPriceError
+
 
 def get_exit_status(http_status, follow=False):
     """Translate HTTP status code to exit status code."""
@@ -180,7 +182,10 @@ def main(args=sys.argv[1:], env=Environment(), error=None):
     except requests.Timeout:
         exit_status = ExitStatus.ERROR_TIMEOUT
         error('Request timed out (%ss).', args.timeout)
-
+    except ResourcePriceGreaterThanMaxPriceError:
+        # TODO: use a distinct error code
+        exit_status = ExitStatus.ERROR
+        error('Resource price is greater than max.')
     except Exception as e:
         # TODO: Better distinction between expected and unexpected errors.
         #       Network errors vs. bugs, etc.

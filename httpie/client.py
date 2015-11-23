@@ -2,13 +2,13 @@ import json
 import sys
 from pprint import pformat
 
-import requests
 from requests.packages import urllib3
 
 from httpie import sessions
 from httpie import __version__
 from httpie.compat import str
 from httpie.plugins import plugin_manager
+from httpie.bitsession import BitTransferSession
 
 
 # https://urllib3.readthedocs.org/en/latest/security.html
@@ -21,7 +21,7 @@ DEFAULT_UA = 'HTTPie/%s' % __version__
 
 
 def get_requests_session():
-    requests_session = requests.Session()
+    requests_session = BitTransferSession()
     for cls in plugin_manager.get_transport_plugins():
         transport_plugin = cls()
         requests_session.mount(prefix=transport_plugin.prefix,
