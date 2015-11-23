@@ -102,7 +102,7 @@ class Session(BaseConfigDict):
         """
         for name, value in request_headers.items():
             value = value.decode('utf8')
-            if name == 'User-Agent' and value.startswith('HTTPie/'):
+            if name == 'User-Agent' and value.startswith('two1-httpie/'):
                 continue
 
             for prefix in SESSION_IGNORED_HEADER_PREFIXES:

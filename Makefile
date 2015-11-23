@@ -7,7 +7,7 @@ all: test
 
 uninstall-httpie:
 	@echo $(TAG)Removing existing installation of HTTPie$(END)
-	- pip uninstall --yes httpie >/dev/null
+	- pip uninstall --yes two1-httpie >/dev/null
 	! which http
 	@echo
 
