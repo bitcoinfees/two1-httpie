@@ -66,18 +66,17 @@ extras_require = {
 
 
 def long_description():
-    with codecs.open('README.rst', encoding='utf8') as f:
+    with codecs.open('README.md', encoding='utf8') as f:
         return f.read()
 
 setup(
-    name='httpie',
+    name='two1-httpie',
     version=httpie.__version__,
     description=httpie.__doc__.strip(),
     long_description=long_description(),
-    url='http://httpie.org/',
-    download_url='https://github.com/jkbrzt/httpie',
+    url='http://github.com/bitcoinfees/two1-httpie',
     author=httpie.__author__,
-    author_email='jakub@roztocil.co',
+    author_email='bitcoinfees@gmail.com',
     license=httpie.__licence__,
     packages=find_packages(),
     entry_points={
@@ -90,11 +89,8 @@ setup(
     tests_require=tests_require,
     cmdclass={'test': PyTest},
     classifiers=[
-        'Development Status :: 5 - Production/Stable',
+        'Development Status :: 2 - Pre-Alpha',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.6',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.1',
         'Programming Language :: Python :: 3.2',

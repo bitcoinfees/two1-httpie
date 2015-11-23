@@ -1,9 +1,9 @@
 """
-HTTPie - a CLI, cURL-like tool for humans.
+two1-httpie: a 21BC fork of httpie
 
 """
-__author__ = 'Jakub Roztocil'
-__version__ = '1.0.0-dev'
+__author__ = 'Ian Chen'
+__version__ = '0.0.1'
 __licence__ = 'BSD'
 
 

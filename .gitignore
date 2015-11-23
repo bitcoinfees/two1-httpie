@@ -1,5 +1,5 @@
 dist
-httpie.egg-info
+two1_httpie.egg-info
 build
 *.pyc
 *.egg
@@ -9,3 +9,4 @@ README.html
 htmlcov
 .idea
 .DS_Store
+*.swp
