@@ -3,27 +3,25 @@
 
 Usage is at the moment identical to the original, for example:
 
-`$ http httpie.org`
+`$ http --verbose http://10.147.17.15:12012/fortune`
 
 ```
-HTTP/1.1 302 Found
-Connection: close
-Content-Length: 292
-Content-Type: text/html; charset=iso-8859-1
-Date: Sun, 22 Nov 2015 07:47:56 GMT
-Location: https://github.com/jkbrzt/httpie
-Server: Apache/2.2.15 (CentOS)
-X-Awesome: Thanks for trying HTTPie :)
+GET /fortune HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Authorization: bS2zfE4hSAlFQ6n5YUz8vomOtWc7hLr1iw5ReA8y9kt2li3UHDtL8oKdWZMQh7sANI2HihuXtw5PzRHmz2/Fiw==
+Bitcoin-Transfer: {"payee_username": "jgarzik", "payee_address": "1FY1haXddue5unhceM5ceVZZuvpP8CwhSR", "description": "http://10.147.17.15:12012/fortune", "timestamp": 1448265196.551775, "payer": "bf_testserver", "amount": 10}
+Connection: keep-alive
+Host: 10.147.17.15:12012
+User-Agent: two1-httpie/0.0.1
 
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
-<html><head>
-<title>302 Found</title>
-</head><body>
-<h1>Found</h1>
-<p>The document has moved <a href="https://github.com/jkbrzt/httpie">here</a>.</p>
-<hr>
-<address>Apache/2.2.15 (CentOS) Server at httpie.org Port 80</address>
-</body></html>
+HTTP/1.0 200 OK
+Content-Length: 41
+Content-Type: text/html; charset=utf-8
+Date: Mon, 23 Nov 2015 07:53:17 GMT
+Server: Werkzeug/0.11.2 Python/3.4.2
+
+You are going to have a new love affair.
 ```
 
 1. HTTP 402 errors are handled behind the scenes using BitTransferRequests, the off-chain payment method.

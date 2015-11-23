@@ -17,7 +17,7 @@ urllib3.disable_warnings()
 
 FORM = 'application/x-www-form-urlencoded; charset=utf-8'
 JSON = 'application/json'
-DEFAULT_UA = 'HTTPie/%s' % __version__
+DEFAULT_UA = 'two1-httpie/%s' % __version__
 
 
 def get_requests_session():
