@@ -3,7 +3,7 @@ two1-httpie: a 21BC fork of httpie
 
 """
 __author__ = 'Ian Chen'
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 __licence__ = 'BSD'
 
 

@@ -1,7 +1,6 @@
 """The 21 BC functionality."""
 import requests.sessions
 
-import two1.lib.bitrequests
 from two1.lib.bitrequests import BitTransferRequests
 from two1.commands.config import Config
 from two1.lib.wallet import Wallet
@@ -19,16 +18,20 @@ class BitTransferSession(requests.sessions.Session):
 
     This substitutes for requests.sessions.Session in httpie.
 
-    It makes use of BitTransferRequests.request, but only after monkey patching
-    two1.lib.bitrequests.requests to refer to this session.
+    We want to use BitTransferRequests.request, but that in turn uses
+    requests.request, which uses the default Session, with no way to specify
+    a custom one.
 
-    Ideally BitRequests should subclass the requests.sessions.Session.
+    The solution for now is to monkey patch requests.request to
+    this Session's bound request function.
+
+    Ideally, BitRequests should subclass requests.sessions.Session.
     """
 
-    def request(self, **kwargs):
+    def request(self, method, url, **kwargs):
         """Wraps the superclass method."""
         # Force BitTransferRequests to use this Session.
-        two1.lib.bitrequests.requests = self
+        requests.request = super(BitTransferSession, self).request
 
         kwargs.update(max_price=MAX_PRICE)
-        return bt_requests.request(**kwargs)
+        return bt_requests.request(method, url, **kwargs)
