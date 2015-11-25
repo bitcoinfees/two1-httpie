@@ -5,8 +5,9 @@ from two1.lib.bitrequests import BitTransferRequests
 from two1.commands.config import Config
 from two1.lib.wallet import Wallet
 
-# Max price per request, hard-coded for now.
-MAX_PRICE = 10000
+# This is set in httpie.core, because args is not global.
+# See httpie.cli for the default value.
+max_price = None
 
 wallet = Wallet()
 username = Config().username
@@ -33,5 +34,5 @@ class BitTransferSession(requests.sessions.Session):
         # Force BitTransferRequests to use this Session.
         requests.request = super(BitTransferSession, self).request
 
-        kwargs.update(max_price=MAX_PRICE)
-        return bt_requests.request(method, url, **kwargs)
+        return bt_requests.request(method, url, max_price=max_price,
+                                   **kwargs)

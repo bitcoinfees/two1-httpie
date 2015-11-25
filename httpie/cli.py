@@ -515,6 +515,18 @@ network.add_argument(
     """
 )
 
+network.add_argument(
+    '--maxprice',
+    type=int,
+    # TODO: put default value in a config somewhere
+    default=10000,
+    metavar="SATOSHIS",
+    help="""
+    Max price in satoshis to pay for the resource via BitTransfer.
+
+    """
+)
+
 
 #######################################################################
 # Troubleshooting
