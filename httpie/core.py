@@ -27,7 +27,6 @@ from httpie.output.streams import (
     build_output_stream,
     write, write_with_colors_win_py3
 )
-import httpie.bitsession
 
 from two1.lib.bitrequests import ResourcePriceGreaterThanMaxPriceError
 
@@ -105,9 +104,6 @@ def main(args=sys.argv[1:], env=Environment(), error=None):
 
     try:
         args = parser.parse_args(args=args, env=env)
-
-        # Set the max_price
-        httpie.bitsession.max_price = args.maxprice
 
         if args.download:
             args.follow = True  # --download implies --follow.

@@ -5,10 +5,6 @@ from two1.lib.bitrequests import BitTransferRequests
 from two1.commands.config import Config
 from two1.lib.wallet import Wallet
 
-# This is set in httpie.core, because args is not global.
-# See httpie.cli for the default value.
-max_price = None
-
 wallet = Wallet()
 username = Config().username
 bt_requests = BitTransferRequests(wallet, username)
@@ -29,10 +25,16 @@ class BitTransferSession(requests.sessions.Session):
     Ideally, BitRequests should subclass requests.sessions.Session.
     """
 
+    def __init__(self):
+        # See httpie.cli for the default value.
+        # This variable is set in httpie.client.get_response.
+        self.max_price = None
+        super(BitTransferSession, self).__init__()
+
     def request(self, method, url, **kwargs):
         """Wraps the superclass method."""
         # Force BitTransferRequests to use this Session.
         requests.request = super(BitTransferSession, self).request
 
-        return bt_requests.request(method, url, max_price=max_price,
+        return bt_requests.request(method, url, max_price=self.max_price,
                                    **kwargs)
