@@ -1,7 +1,7 @@
 # two1-httpie
 ## A fork of [HTTPie](https://github.com/jkbrzt/httpie) for the 21 Bitcoin Computer
 
-Usage is at the moment identical to the original, for example:
+Usage is similar to the original:
 
 `$ http --verbose http://10.147.17.15:12012/fortune`
 
@@ -25,7 +25,7 @@ You are going to have a new love affair.
 ```
 
 1. HTTP 402 errors are handled behind the scenes using BitTransferRequests, the off-chain payment method.
-2. Max price per request is currently hard-coded to 10,000 satoshis.
+2. Specify the max price using --maxprice (default 10,000 satoshis).
 
 ## Installation
 
