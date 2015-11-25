@@ -25,16 +25,9 @@ class BitTransferSession(requests.sessions.Session):
     Ideally, BitRequests should subclass requests.sessions.Session.
     """
 
-    def __init__(self):
-        # See httpie.cli for the default value.
-        # This variable is set in httpie.client.get_response.
-        self.max_price = None
-        super(BitTransferSession, self).__init__()
-
     def request(self, method, url, **kwargs):
         """Wraps the superclass method."""
         # Force BitTransferRequests to use this Session.
         requests.request = super(BitTransferSession, self).request
 
-        return bt_requests.request(method, url, max_price=self.max_price,
-                                   **kwargs)
+        return bt_requests.request(method, url, **kwargs)

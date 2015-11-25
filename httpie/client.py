@@ -33,7 +33,6 @@ def get_response(args, config_dir):
     """Send the request and return a `request.Response`."""
 
     requests_session = get_requests_session()
-    requests_session.max_price = args.maxprice
 
     if not args.session and not args.session_read_only:
         kwargs = get_requests_kwargs(args)
@@ -136,6 +135,7 @@ def get_requests_kwargs(args, base_headers=None):
         'files': args.files,
         'allow_redirects': args.follow,
         'params': args.params,
+        'max_price': args.maxprice
     }
 
     return kwargs
