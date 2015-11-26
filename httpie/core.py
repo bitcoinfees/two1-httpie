@@ -182,10 +182,10 @@ def main(args=sys.argv[1:], env=Environment(), error=None):
     except requests.Timeout:
         exit_status = ExitStatus.ERROR_TIMEOUT
         error('Request timed out (%ss).', args.timeout)
-    except ResourcePriceGreaterThanMaxPriceError:
+    except ResourcePriceGreaterThanMaxPriceError as e:
         # TODO: use a distinct error code
         exit_status = ExitStatus.ERROR
-        error('Resource price is greater than max.')
+        error(str(e))
     except Exception as e:
         # TODO: Better distinction between expected and unexpected errors.
         #       Network errors vs. bugs, etc.
