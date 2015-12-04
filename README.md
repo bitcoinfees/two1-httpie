@@ -36,8 +36,5 @@ Clone this repository, then install via pip::
 `$ pip3 install --upgrade ./two1-httpie`
 
 
-## Test it out!
-
-Send me a couple of 21 BC satoshis (much appreciated as I don't have a 21 BC to mine with):
-
-`$ http --verbose --form 10.145.66.31:5001/donate amount=<donate amount> message="optional message"`
+*NOTE: I've stopped maintaining this since 21 update #1, as I don't have access to a 21 BC.
+The program may or may not still work.*
